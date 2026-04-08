@@ -323,7 +323,7 @@ export default function App() {
                 {/* Text Block */}
                 <div className="flex-1 min-w-0">
                   <span className="text-[#00FF00] text-[10px] font-bold uppercase tracking-wider mb-0.5 block">
-                    jafw.0
+                    bu_gha1
                   </span>
                   <h3 className="text-white font-semibold text-base truncate leading-tight mb-0.5">
                     {game.title}
