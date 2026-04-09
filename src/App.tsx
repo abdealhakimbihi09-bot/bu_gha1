@@ -4,7 +4,7 @@
  */
 
 import { useState, useMemo } from 'react';
-import { Search, ChevronRight } from 'lucide-react';
+import { Search, ChevronRight, Instagram, Music2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface Game {
@@ -257,19 +257,22 @@ export default function App() {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#00FF00] selection:text-black">
+    <div className="min-h-screen bg-[#0b0d12] text-white font-sans selection:bg-[#00FF00] selection:text-black relative overflow-x-hidden">
+      {/* Premium Background Glow */}
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_-20%,#161a22_0%,#0b0d12_100%)] pointer-events-none" />
+      
       {/* Header Area */}
-      <header className="bg-linear-to-b from-[#202020] to-[#181818] pt-16 pb-12 px-4 flex flex-col items-center">
+      <header className="relative pt-16 pb-12 px-4 flex flex-col items-center">
         {/* Logo */}
-        <div className="w-8 h-8 bg-[#00FF00] rounded-sm mb-4 shadow-[0_0_15px_rgba(0,255,0,0.3)]" />
+        <div className="w-8 h-8 bg-[#00FF00] rounded-sm mb-4 shadow-[0_0_20px_rgba(0,255,0,0.2)]" />
         
         {/* Site Name */}
-        <h1 className="text-[#00FF00] text-2xl font-bold tracking-tight mb-1">
+        <h1 className="text-[#00FF00] text-2xl font-bold tracking-tight mb-1 drop-shadow-sm">
           bu_gha1.club
         </h1>
         
         {/* Tagline */}
-        <p className="text-[#FFA500] text-sm font-medium opacity-90">
+        <p className="text-[#FFA500] text-sm font-medium opacity-80">
           - PlayStation games on your phone -
         </p>
       </header>
@@ -293,51 +296,75 @@ export default function App() {
         <div className="flex flex-col gap-4">
           <AnimatePresence mode="popLayout">
             {filteredGames.map((game, index) => (
-              <motion.div
-                key={game.title}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ 
-                  duration: 0.3, 
-                  delay: index * 0.03,
-                  ease: [0.23, 1, 0.32, 1]
-                }}
-                onClick={() => setSelectedGame(game)}
-                className="group relative bg-[#181818] border border-[#222222] hover:bg-[#202020] hover:border-[#333333] rounded-2xl p-4 flex items-center gap-4 cursor-pointer transition-all duration-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:-translate-y-0.5"
-              >
-                {/* Inner Highlight Effect */}
-                <div className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none" />
+              <div key={game.title}>
+                <motion.div
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ 
+                    duration: 0.3, 
+                    delay: index * 0.03,
+                    ease: [0.23, 1, 0.32, 1]
+                  }}
+                  onClick={() => setSelectedGame(game)}
+                  className="group relative bg-[#181818] border border-[#222222] hover:bg-[#202020] hover:border-[#333333] rounded-2xl p-4 flex items-center gap-4 cursor-pointer transition-all duration-200 hover:shadow-[0_8px_30px_rgb(0,0,0,0.5)] hover:-translate-y-0.5"
+                >
+                  {/* Inner Highlight Effect */}
+                  <div className="absolute inset-0 rounded-2xl border border-white/5 pointer-events-none" />
 
-                {/* Thumbnail */}
-                <div className="shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-[#222222] border border-[#333333]">
-                  <img
-                    src={game.image}
-                    alt={game.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
+                  {/* Thumbnail */}
+                  <div className="shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-[#222222] border border-[#333333]">
+                    <img
+                      src={game.image}
+                      alt={game.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                  </div>
 
-                {/* Text Block */}
-                <div className="flex-1 min-w-0">
-                  <span className="text-[#00FF00] text-[10px] font-bold uppercase tracking-wider mb-0.5 block">
-                    bu_gha1
-                  </span>
-                  <h3 className="text-white font-semibold text-base truncate leading-tight mb-0.5">
-                    {game.title}
-                  </h3>
-                  <p className="text-gray-400 text-xs truncate leading-relaxed">
-                    {game.description}
-                  </p>
-                </div>
+                  {/* Text Block */}
+                  <div className="flex-1 min-w-0">
+                    <span className="text-[#00FF00] text-[10px] font-bold uppercase tracking-wider mb-0.5 block">
+                      bu_gha1
+                    </span>
+                    <h3 className="text-white font-semibold text-base truncate leading-tight mb-0.5">
+                      {game.title}
+                    </h3>
+                    <p className="text-gray-400 text-xs truncate leading-relaxed">
+                      {game.description}
+                    </p>
+                  </div>
 
-                {/* Right Icon */}
-                <div className="shrink-0 text-gray-500 group-hover:text-white transition-colors">
-                  <ChevronRight className="w-5 h-5" />
-                </div>
-              </motion.div>
+                  {/* Right Icon */}
+                  <div className="shrink-0 text-gray-500 group-hover:text-white transition-colors">
+                    <ChevronRight className="w-5 h-5" />
+                  </div>
+                </motion.div>
+                
+                {game.title === "Left 4 dead 2" && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex justify-center gap-8 mt-6 mb-4"
+                  >
+                    <a 
+                      href="#" 
+                      className="text-gray-500 hover:text-[#00FF00] transition-all duration-300 hover:scale-110"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="w-7 h-7" />
+                    </a>
+                    <a 
+                      href="#" 
+                      className="text-gray-500 hover:text-[#00FF00] transition-all duration-300 hover:scale-110"
+                      aria-label="TikTok"
+                    >
+                      <Music2 className="w-7 h-7" />
+                    </a>
+                  </motion.div>
+                )}
+              </div>
             ))}
           </AnimatePresence>
 
