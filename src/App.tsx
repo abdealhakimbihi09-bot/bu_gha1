@@ -331,8 +331,46 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#0b0d12] text-white font-sans selection:bg-[#00FF00] selection:text-black relative overflow-x-hidden">
-      {/* Premium Background Glow */}
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_-20%,#161a22_0%,#0b0d12_100%)] pointer-events-none" />
+      {/* Premium Background Glow System */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {/* Base dark gradient */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,#161a22_0%,#0b0d12_100%)]" />
+        
+        {/* Layered Animated Glows */}
+        <motion.div 
+          animate={{ 
+            x: [0, 30, -20, 0],
+            y: [0, -20, 30, 0],
+            scale: [1, 1.1, 0.9, 1]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[100%] h-[60%] bg-cyan-500/5 blur-[120px] rounded-full opacity-60" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, -40, 20, 0],
+            y: [0, 30, -40, 0],
+          }}
+          transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[20%] left-[-10%] w-[50%] h-[50%] bg-blue-900/10 blur-[120px] rounded-full" 
+        />
+        <motion.div 
+          animate={{ 
+            x: [0, 20, -30, 0],
+            y: [0, 40, -20, 0],
+          }}
+          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] bg-emerald-500/5 blur-[100px] rounded-full" 
+        />
+        <motion.div 
+          animate={{ 
+            scale: [1, 1.2, 0.8, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
+          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[40%] left-[20%] w-[30%] h-[30%] bg-blue-600/5 blur-[100px] rounded-full" 
+        />
+      </div>
       
       {/* Main Content Container */}
       <main className="max-w-3xl mx-auto px-4 pt-12 pb-20">
